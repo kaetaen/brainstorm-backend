@@ -15,11 +15,11 @@ class Topic extends Model
     protected $fillable = [
         'title',
         'theme',
-        'id_user'
+        'user_id'
     ];
 
     public function user() {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
     
 }

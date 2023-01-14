@@ -23,3 +23,7 @@ Route::prefix('auth')->group(function (){
     Route::post('logout', [\App\Http\Controllers\Auth\Api\LoginController::class, 'logout'])->middleware('auth:sanctum');
     Route::post('register', [\App\Http\Controllers\Auth\Api\RegisterController::class, 'register']);    
 });
+
+Route::prefix('app')->group(function() {
+    Route::get('topics', [App\Http\Controllers\TopicController::class, 'index']);
+});

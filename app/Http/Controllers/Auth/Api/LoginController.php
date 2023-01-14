@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -15,11 +16,14 @@ class LoginController extends Controller
             abort(401, 'Invalid Credentials');
 
         $token = auth()->user()->createToken('auth_token');
+        
+        $userData = User::where('email', $credentials['email'])->get(['id', 'name', 'email']);
 
         return response()
                     ->json([
                         'data' => [
-                            'token' => $token->plainTextToken
+                            'token' => $token->plainTextToken,
+                            'loggedUser' => $userData
                         ]
                     ]);
     }

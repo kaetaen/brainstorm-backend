@@ -45,10 +45,10 @@ class User extends Authenticatable
     ];
 
     public function topic() {
-        $this->hasMany(Topic::class);
+       return $this->hasMany(Topic::class);
     }
 
     public function comments(){
-        $this->hasMany(Comments::class);
+       return $this->hasMany(Comments::class);
     }
 }
