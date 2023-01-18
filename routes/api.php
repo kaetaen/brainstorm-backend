@@ -26,4 +26,5 @@ Route::prefix('auth')->group(function (){
 
 Route::prefix('app')->group(function() {
     Route::get('topics', [App\Http\Controllers\TopicController::class, 'index']);
+    Route::get('topics/{id}', [App\Http\Controllers\TopicController::class, 'show']);
 });
